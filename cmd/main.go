@@ -7,7 +7,6 @@ import (
 )
 
 var (
-	ecdhPublicKey    = flag.String("ecdhPublicKey", "", "ecdh public key")
 	ecdhPrivateKey   = flag.String("ecdhPrivateKey", "", "ecdh private key")
 	encryptedMessage = flag.String("encryptedMessage", "", "encrypted message")
 	validatorsList   = flag.String("validators", "", "comma-separated list of validators")
@@ -20,6 +19,6 @@ func main() {
 	if utils.ValidateString(pk) {
 		srv.GenerateVEMRequest(*pk, *validatorsList)
 	} else {
-		srv.DecryptData(ecdhPublicKey, ecdhPrivateKey, encryptedMessage)
+		srv.DecryptData(ecdhPrivateKey, encryptedMessage)
 	}
 }

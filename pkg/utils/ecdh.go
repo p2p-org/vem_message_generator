@@ -34,6 +34,15 @@ func MarshalECDHPublicKey(pk *ecdh.PublicKey) (string, error) {
 }
 
 func UnmarshalECDHPublicKey(encodedPK string) (*ecdh.PublicKey, error) {
+	ecdsaPK, err := UnmarshalECDSAPublicKey(encodedPK)
+	if err != nil {
+		return nil, err
+	}
+
+	return ecdsaPK.ECDH()
+}
+
+func UnmarshalECDSAPublicKey(encodedPK string) (*ecdsa.PublicKey, error) {
 	pkBytes, err := base64.StdEncoding.DecodeString(encodedPK)
 	if err != nil {
 		return nil, fmt.Errorf("failed to decode PEM block from base64. err: %w", err)
@@ -53,7 +62,7 @@ func UnmarshalECDHPublicKey(encodedPK string) (*ecdh.PublicKey, error) {
 		return nil, fmt.Errorf("key not ECDSA-compatible, most probably key not on one of NIST curves but has to be on P256 curve")
 	}
 
-	return ecdsaPK.ECDH()
+	return ecdsaPK, nil
 }
 
 func ComputeECDHSharedSecret(clientPublicKey string) (ourSK *ecdh.PrivateKey, sharedSecret *ecdsa.PrivateKey, err error) {
