@@ -3,7 +3,7 @@
 ### usage
 #### generate VEM
 ```shell
-go run cmd/main.go --validators 0x123,0x234 --pk 3c419398dbdf7b0a2a2a49008dc2f9898f2b84e799b51
+go run cmd/main.go --validators 0x123,0x234 --pk 1d073aba70e3e855d409e0f2722d6b3be2399f6b152355596f662aa6d1ba6a84
 ```
 #### decrypt VEM
 
