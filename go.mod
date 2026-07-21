@@ -5,7 +5,7 @@ go 1.21
 require (
 	github.com/attestantio/go-eth2-client v0.19.5
 	github.com/ethereum/go-ethereum v1.13.5
-	github.com/google/uuid v1.4.0
+	github.com/google/uuid v1.6.0
 	github.com/stretchr/testify v1.8.4
 )
 
